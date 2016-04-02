@@ -11,8 +11,7 @@
 ├── src                      // 生产目录
 ├── webpack                  // Webpack配置目录
 │   ├── webpack.config.dev.client.js        // 开发的客户端Webpack配置文件
-│   ├── webpack.config.dev.server.js        // 开发的服务端渲染Webpack 配置文件
-│   ├── webpack-config-prod.js              // 生产的Webpack 配置文件
+│   ├── webpack.config.prod.js              // 生产的Webpack 配置文件
 ├── History.md               // 更新日志
 ├── nodemon.json             // nodemon配置文件
 ├── process.json             // pm2配置文件
