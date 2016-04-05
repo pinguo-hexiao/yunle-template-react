@@ -94,7 +94,6 @@ config.plugins = [
     $: "jquery",
     jQuery: "jquery",
     "window.jQuery": "jquery",
-    // "UE": "UE",
     "Immutable": "Immutable"
   }),
   new webpack.DefinePlugin({
@@ -105,7 +104,7 @@ config.plugins = [
   new HtmlWebpackPlugin({
     title: 'React app',
     filename: 'index.ejs',
-    template: path.join(__dirname, "..", 'index.html'),
+    template: path.join(__dirname, "..", "src", 'index.html'),
     hash: true,
     minify:{    
       removeComments:true,    
