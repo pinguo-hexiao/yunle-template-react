@@ -1,7 +1,22 @@
 {
-    "verbose": false,
-    "watch": [
-      "server.js",
-      "webpack/*"
-    ]
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules",
+    "src",
+    "test"
+  ],
+  "verbose": true,
+  "execMap": {
+    "js": "node --harmony"
+  },
+  "watch": [
+    "server.js",
+    "webpack.config.js",
+    "webpack/*"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js json"
 }

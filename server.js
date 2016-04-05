@@ -6,6 +6,8 @@ var koa = require("koa")
 		,serve = require("koa-static")
 		,app = koa();
 		
+app.name = "front-server-koa";
+
 // 设置默认环境变量
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
@@ -16,7 +18,7 @@ var port = process.env.PORT || defaultPort;
 app.use(serve(path.join(__dirname, 'dist')));
 
 if (isDev) {
-  var config = require("./webpack/webpack.config.dev.client.js");
+  var config = require("./webpack/webpack.dev.client.config.js");
   var compiler = require("webpack")(config);
   app.use(require("koa-webpack-dev-middleware")(compiler, {
     "noInfo": false,
