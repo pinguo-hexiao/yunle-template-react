@@ -2,6 +2,8 @@
 基于koa的reactjs, react-router, redux, immutablejs的前端开发框架 
 # 启动
 ###开发
+npm install
+
 npm run nodemon
 ###生产
 npm run build
