@@ -4,6 +4,7 @@ var config = require('./webpack.dev.client.config.js');
 var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var TransferWebpackPlugin = require('transfer-webpack-plugin'); //把指定文件夹下的文件复制到指定的目录
 
 // 定义函数判断是否是在当前生产环境，这个很重要，一位开发环境和生产环境配置上有一些区别
 var isProduction = function () {
@@ -27,8 +28,8 @@ config.entry = {
 
 config.output= {
   path: path.join(__dirname, '..', 'dist/'),
-  filename: 'js/[name].js',
-  chunkFilename: "js/[id].js",
+  filename: 'js/[name].[hash].js',
+  chunkFilename: "js/[id].[hash].js",
   // publicPath: 'http://localhost:8080/'
 };
 
@@ -76,8 +77,8 @@ config.module= {
     ]
   };
 config.plugins = [
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.js'),
-  new ExtractTextPlugin('/css/[name].css',
+  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.[hash].js'),
+  new ExtractTextPlugin('/css/[name].[hash].css',
     {
       disable: false,
       allChunks: true
@@ -105,12 +106,22 @@ config.plugins = [
     title: 'React app',
     filename: 'index.ejs',
     template: path.join(__dirname, "..", "src", 'index.html'),
-    hash: true,
+    hash: false,
     minify:{    
       removeComments:true,    
       collapseWhitespace:true 
     }
-  })
+  }),
+  new TransferWebpackPlugin([
+    { 
+      from: '../src/assets/images', 
+      to: '../dist/images'
+    },
+    { 
+      from: '../src/assets/fonts', 
+      to: '../dist/fonts'
+    }
+  ])
 ];
 
 module.exports = config;

@@ -14,6 +14,7 @@ npm run build
 .
 ├── README.md           
 ├── dist                     // 项目build目录
+├── config                   // 服务器配制目录
 ├── routes                   // 服务器路由目录
 ├── logs                     // 生产环境日志目录
 ├── src                      // 开发目录

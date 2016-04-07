@@ -13,7 +13,7 @@ var isProduction = function () {
 };
 
 module.exports = {
-  devtool: isProduction()?null:'source-map',
+  devtool: 'eval-source-map',
   context: path.join(__dirname, "..", "src"),
   entry: entry,
   output: {

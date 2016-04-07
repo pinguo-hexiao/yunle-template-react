@@ -11,7 +11,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 let initialState = require('./config/initialState');
 
 
-const store = configureStore(initialState);
+const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
 // reduxTools

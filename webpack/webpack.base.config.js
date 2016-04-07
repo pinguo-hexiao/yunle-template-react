@@ -2,7 +2,8 @@
 
 var path = require('path'),
   ExtractTextPlugin = require('extract-text-webpack-plugin'),
-  ComponentPlugin = require('component-webpack-plugin');
+  ComponentPlugin = require('component-webpack-plugin'),
+  TransferWebpackPlugin = require('transfer-webpack-plugin'); //把指定文件夹下的文件复制到指定的目录
 
 var entry = [];
 entry['app'] = [
@@ -26,7 +27,13 @@ module.exports = {
   },
   plugins: [
     new ComponentPlugin(),
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('[name].css'),
+    new TransferWebpackPlugin([
+      { 
+        from: '../src/assets/images', 
+        to: '../dist/images'
+      }
+    ])
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
