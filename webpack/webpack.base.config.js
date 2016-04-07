@@ -1,51 +1,51 @@
 'use strict';
-
-var path = require('path'),
-  ExtractTextPlugin = require('extract-text-webpack-plugin'),
-  ComponentPlugin = require('component-webpack-plugin'),
-  TransferWebpackPlugin = require('transfer-webpack-plugin'); //把指定文件夹下的文件复制到指定的目录
-
-var entry = [];
-entry['app'] = [
-  'webpack-hot-middleware/client',
-  './client.js'
-];
+var path = require('path');
 
 module.exports = {
-  entry: entry,
+  entry: './client.js',
+  context: path.join(__dirname, '..', 'src'),
   output: {
-    filename: '[name].js'
+    path: path.join(__dirname, '..', 'dist/js/'),
+    filename: 'js/[name].[hash].js',
+    chunkFilename: "js/[id].[hash].js"
   },
   resolve: {
     root: [
       __dirname,
-      path.join(__dirname, "..", 'src', 'main', 'assets')
+      path.join(__dirname, '..', 'src', 'main', 'assets')
     ],
     modulesDirectories: [
       '../node_modules'
-    ]
-  },
-  plugins: [
-    new ComponentPlugin(),
-    new ExtractTextPlugin('[name].css'),
-    new TransferWebpackPlugin([
-      { 
-        from: '../src/assets/images', 
-        to: '../dist/images'
-      }
-    ])
-  ],
-  resolve: {
+    ],
     extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [{
+      test: /(\.jsx|\.js)?$/,
+      exclude: /node_modules/,
+      loader: 'es3ify'
+    }, 
+    {
+      test: /(\.jsx|\.js)?$/,
+      exclude: /node_modules/,
+      loader: 'babel',
+      query: {
+        presets: ['es2015', 'react', 'stage-0'],
+        plugins: ['add-module-exports']
+      }
+    },
+    {
+      test: /\.json$/,
+      exclude: /node_modules/,
+      loader: 'json-loader'
+    },
+    {
       test: /\.css$/,
       exclude: /.*\.min.css/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss')
+      loader: 'style!css?sourceMap&-minimize!postcss'
     }, {
       test: /\.less$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader', 'postcss')
+      loader: 'style!css?sourceMap&-minimize!postcss!less?sourceMap'
     }, {
       test: /\.png$/,
       loader: 'url-loader?prefix=img/&limit=5000&name=images/[name].[ext]'
