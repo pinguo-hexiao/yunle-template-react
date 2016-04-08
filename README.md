@@ -32,8 +32,9 @@ npm run build
 │   └── client.js            // 客户端入口
 ├── test                     // 测试配置目录
 ├── webpack                  // Webpack配置目录
-│   ├── webpack.config.dev.client.js        // 开发的客户端Webpack配置文件
-│   ├── webpack.config.prod.js              // 生产的Webpack配置文件
+│   ├── webpack.base.config.js              // Webpack基础配置文件
+│   ├── webpack.dev.client.config.js        // 开发的客户端Webpack配置文件
+│   ├── webpack.prod.config.js              // 生产的Webpack配置文件
 ├── .babelrc                 // babel配置文件
 ├── .eslintrc.js             // eslint配置文件
 ├── History.md               // 更新日志
