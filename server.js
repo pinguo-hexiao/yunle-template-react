@@ -1,11 +1,12 @@
 var path = require('path');
-// var favicon = require('serve-favicon');
 var koa = require('koa')
 		,logger = require('koa-logger')
 		,mount = require('koa-mount')
 		,serve = require('koa-static')
 		,app = koa();
-		
+var wait = require('co-wait');
+var render = require('co-ejs');
+
 app.name = 'front-server-koa';
 
 // 设置默认环境变量
@@ -24,7 +25,7 @@ if (isDev) {
   var config = require('./webpack/webpack.dev.client.config.js');
   var compiler = require('webpack')(config);
   app.use(require('koa-webpack-dev-middleware')(compiler, {
-    noInfo: false,
+    noInfo: true,
     hot:true,
     inline: true,
     publicPath: config.output.publicPath,
@@ -36,6 +37,15 @@ if (isDev) {
 }
 
 app.use(logger());
+
+
+app.use(render(app, {
+  root: isDev ? path.join(__dirname, 'src') : path.join(__dirname, 'dist'),
+  layout: 'index',
+  viewExt: 'html',
+  cache: true,
+  debug: false
+}));
 
 app.use(mount('/', routes.middleware()));
 app.use(mount('/api/v1', APIv1.middleware()));

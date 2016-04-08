@@ -6,13 +6,13 @@ module.exports = {
   context: path.join(__dirname, '..', 'src'),
   output: {
     path: path.join(__dirname, '..', 'dist/js/'),
-    filename: 'js/[name].[hash].js',
-    chunkFilename: "js/[id].[hash].js"
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[id].js'
   },
   resolve: {
     root: [
       __dirname,
-      path.join(__dirname, '..', 'src', 'main', 'assets')
+      path.join(__dirname, '..', 'src')
     ],
     modulesDirectories: [
       '../node_modules'

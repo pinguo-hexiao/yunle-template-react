@@ -71,7 +71,7 @@ config.module= {
 };
 config.plugins = [
   new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.[hash].js'),
-  new ExtractTextPlugin('/css/[name].[hash].css',
+  new ExtractTextPlugin('css/[name].[hash].css',
     {
       disable: false,
       allChunks: true
@@ -92,12 +92,11 @@ config.plugins = [
   }),
   new webpack.DefinePlugin({
     __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-    __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false')),
-    'process.env.NODE_ENV': 'production'
+    __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
   }),
   new HtmlWebpackPlugin({
     title: 'React app',
-    filename: 'index.ejs',
+    filename: path.join(__dirname, '..', 'dist', 'index.html'),
     template: path.join(__dirname, '..', 'src', 'index.html'),
     hash: false,
     minify:{    

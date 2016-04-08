@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var config = require('./webpack.base.config');
 
 config.devtool = 'eval-source-map';
-config.entry = [
+config.entry['app'] =  [
   'webpack-hot-middleware/client',
   './client.js'
 ];
@@ -11,9 +11,9 @@ config.plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),
   new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
+    $: 'jquery',
+    jQuery: 'jquery',
+    'window.jQuery': 'jquery'
   }),
   new webpack.DefinePlugin({
     __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
