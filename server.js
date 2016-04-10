@@ -1,37 +1,36 @@
-var path = require('path');
-var koa = require('koa')
-		,logger = require('koa-logger')
-		,mount = require('koa-mount')
-		,serve = require('koa-static')
-		,app = koa();
-var wait = require('co-wait');
-var render = require('co-ejs');
+const path = require('path');
+const koa = require('koa');
+const logger = require('koa-logger');
+const mount = require('koa-mount');
+const serve = require('koa-static');
+const app = koa();
+const render = require('co-ejs');
 
 app.name = 'front-server-koa';
 
 // 设置默认环境变量
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var isDev = process.env.NODE_ENV === 'development';
-var defaultPort = isDev ? 5000 : 8300;
-var port = process.env.PORT || defaultPort;
+const isDev = process.env.NODE_ENV === 'development';
+const defaultPort = isDev ? 5000 : 8300;
+const port = process.env.PORT || defaultPort;
 
 app.use(serve(path.join(__dirname, 'dist')));
 
-var routes = require('./routes/index');
-var APIv1 = require('./routes/api_v1');
+const routes = require('./routes/index');
+const APIv1 = require('./routes/api_v1');
 
 if (isDev) {
-  var config = require('./webpack/webpack.dev.client.config.js');
-  var compiler = require('webpack')(config);
+  const config = require('./webpack/webpack.dev.client.config.js');
+  const compiler = require('webpack')(config);
   app.use(require('koa-webpack-dev-middleware')(compiler, {
     noInfo: true,
-    hot:true,
+    hot: true,
     inline: true,
     publicPath: config.output.publicPath,
     stats: {
-      colors: true
-    }
+      colors: true,
+    },
   }));
   app.use(require('koa-webpack-hot-middleware')(compiler));
 }
@@ -43,14 +42,14 @@ app.use(render(app, {
   layout: 'index',
   viewExt: 'html',
   cache: true,
-  debug: false
+  debug: false,
 }));
 
 app.use(mount('/', routes.middleware()));
 app.use(mount('/api/v1', APIv1.middleware()));
 
 
-app.listen(port, function(err) {
+app.listen(port, (err) => {
   if (err) {
     console.error(err);
   } else {

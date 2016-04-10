@@ -1,32 +1,48 @@
-var Router = require('koa-router');
-var request = require('request');
-var APIv1 = new Router();
-var Promise = require('bluebird');
-var API_ROOT = require('../config/api.config').API_ROOT;
-
-var req_list = [
-	{name: 'list_1', url: '/WeChatMass/List'}, 
-	{name: 'list_2', url: '/WeChatAutoReply/Sub'}
-];
+const Router = require('koa-router');
+const request = require('request');
+const APIv1 = new Router();
+const API_ROOT = require('../config/api.config').API_ROOT;
 
 function makePromise(opt) {
   return new Promise((resolve) => {
-		var fullUrl = (opt.url.indexOf(API_ROOT) === -1) ? API_ROOT + opt.url : opt.url;
-		request(fullUrl, function (error, response, body) {
-		 	if (!error && response.statusCode == 200) {
-		 		resolve({[opt.name]: body});
-			}	
+		const fullUrl = (opt.url.indexOf(API_ROOT) === -1) ? API_ROOT + opt.url : opt.url;
+		request(fullUrl, (error, response, body) => {
+		 	if( !error && response.statusCode === 200 ) {
+		 		resolve (body);
+			}
 		});
   });
 }
 
 APIv1.get('/', function *() {
-  this.body = yield new Promise.all(req_list.map(function(item){
-		return makePromise(item);
-	}))
-	.then(function(res) {
-		return res;
-	});
+	const req = {};
+	const req_list = [
+		{
+			name: 'list_1',
+			url: '/WeChatMass/List'
+		},
+		{
+			name: 'list_3',
+			url: '/WeChatMass/List'
+		},
+		{
+			name: 'list_14',
+			url: '/WeChatMass/List'
+		},
+		{
+			name: 'list_15',
+			url: '/WeChatMass/List'
+		},
+		{
+			name: 'list_2',
+			url: '/WeChatAutoReply/Sub'
+		}
+	];
+	for (var i = req_list.length - 1; i >= 0; i--) {
+		req[req_list[i].name] =  Promise.resolve(makePromise(req_list[i]));
+	}
+  const res = yield req;
+  this.body = res;
 });
 
 module.exports = APIv1;
