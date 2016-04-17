@@ -4,7 +4,7 @@
 ###开发
 npm install
 
-npm run nodemon
+npm run dev
 ###生产
 npm run build
 

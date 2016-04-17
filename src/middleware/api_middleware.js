@@ -1,46 +1,30 @@
-// import 'isomorphic-fetch';
+import 'isomorphic-fetch';
 import { API_ROOT } from '../config/apiConf';
 import { CALL_API } from '../constants';
 
 // 接口请求
 function callApi(endpoint, method, body, callback) {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
-  const UserToken = body['UserToken'];
-  delete body['UserToken'];
-  return $.ajax({
-       type: method || "GET",
-       url: fullUrl,
-       data: body,
-       dataType: "json",
-       beforeSend: function(xhr){
-        if(UserToken){
-          xhr.setRequestHeader('UserToken', UserToken);
-        }
-       },
-       success: function(data){
-                   return data
-                }
-   });
-  // return fetch(fullUrl,{
-		//   method: method || 'GET',
-		//   headers: {
-		// 	  'Accept': 'application/json',
-		// 	  'Content-Type': 'application/json'
-		// 	},
-		//   body: body
-		// })
-  //   .then(response =>
-  //     response.json().then(json => ({ json, response }))
-  //   ).then(({ json, response }) => {
-  //     if (!response.ok) {
-  //       return Promise.reject(json)
-  //     }
-  //     return json
-  //   })
+  return fetch(fullUrl, {
+      	  method: method || 'GET',
+      	  headers: {
+      		  'Accept': 'application/json',
+      		  'Content-Type': 'application/json'
+      		},
+      	  body: body
+      	})
+        .then(response =>
+          response.json().then(json => ({ json, response }))
+        ).then(({ json, response }) => {
+          if (!response.ok) {
+            return Promise.reject(json);
+          }
+          return json;
+        });
 }
 // 登录是否到期
 let isLogin = true;
-export default ({dispatch,getState}) => next => action => {
+export default ({ dispatch,getState }) => next => action => {
 	const callAPI = action[CALL_API];
   const state = getState();
   
@@ -72,12 +56,6 @@ export default ({dispatch,getState}) => next => action => {
       // 判断是否登录 || 登录是否到期
       if(response.errcode === 200000 && isLogin ){
         isLogin = false;
-        // 通知提醒框
-        // Modal.error({
-        //   title: '登录超时',
-        //   content: '登录超时,请重新登录！',
-        //   onOk() {  next({ type: LOGIN_TYPE.LOGIN_TIME_OUT });}
-        // });
       }else if(isLogin ){
         isLogin = true;
         // 回调

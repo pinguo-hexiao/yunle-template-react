@@ -14,7 +14,7 @@
     "url": "https://github.com/hexiao-o/front-server-koa/issues"
   },
   "scripts": {
-    "nodemon": "nodemon ./server",
+    "dev": "nodemon ./server",
     "restart": "pm2 restart process.json",
     "start": "pm2 start process.json",
     "stop": "pm2 stop process.json",
