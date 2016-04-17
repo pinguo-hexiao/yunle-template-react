@@ -19,6 +19,7 @@ app.use(serve(path.join(__dirname, 'dist')));
 
 const routes = require('./routes/index');
 const APIv1 = require('./routes/api_v1');
+const _proxy = require('./routes/proxy');
 
 if (isDev) {
   const config = require('./webpack/webpack.dev.client.config.js');
@@ -47,6 +48,7 @@ app.use(render(app, {
 
 app.use(mount('/', routes.middleware()));
 app.use(mount('/api/v1', APIv1.middleware()));
+app.use(mount('/proxy', _proxy.middleware()));
 
 
 app.listen(port, (err) => {
