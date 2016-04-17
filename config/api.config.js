@@ -1,3 +1,3 @@
 module.exports = {
-	API_ROOT: "http://localhost:4000/api/v1"
+	API_ROOT: "http://localhost:8888/api/v1"
 };
