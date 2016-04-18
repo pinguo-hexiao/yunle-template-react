@@ -25,12 +25,12 @@ APIv1.get('/', function *() {
 		{
 			name: 'list_1',
 			method: 'GET',
-			url: '/WeChatMass/List'
+			url: '/user'
 		},
 		{
 			name: 'list_2',
 			method: 'GET',
-			url: '/WeChatAutoReply/Sub'
+			url: '/user/1'
 		}
 	];
 	for (var i = req_list.length - 1; i >= 0; i--) {

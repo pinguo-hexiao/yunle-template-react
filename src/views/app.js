@@ -30,9 +30,18 @@ class App extends Component {
       actions, 
       children,
       routeActions,
-      routing
+      routing,
+      test
     } = this.props;
 		return (<div>
+          <div>
+            { test.getIn(['test','text']) }
+            <button onClick={actions.test_say.bind(this, Math.random())}>redux同步操作</button>
+          </div>
+          <div>
+            { test.getIn(['test','async']) }
+            <button onClick={actions.test_async.bind(this, Math.random())}>redux异步操作</button>
+          </div>
             {
               React.cloneElement(children || <span>没有子页面</span>, {
                 actions,
@@ -45,12 +54,14 @@ class App extends Component {
 }
 
 App.propTypes = {
-  routing : PropTypes.object.isRequired
+  routing : PropTypes.object.isRequired,
+  test    : PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    routing : state.routing
+    routing : state.routing,
+    test    : state.test
   };
 }
 

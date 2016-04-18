@@ -1,9 +1,9 @@
 // 接口域名
-let host = '/api/v1';
+let host = '/proxy';
 
 if(process.env.NODE_ENV === 'production'){
 	// 正式线上接口
-  host = '/online_api';
+  host = '/api/v1';
 }
 
 export const API_ROOT = host;

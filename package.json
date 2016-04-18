@@ -21,7 +21,7 @@
     "pm2logs": "pm2 logs",
     "pm2flush": "pm2 flush",
     "build": "rm -rf dist && export BABEL_ENV=production && export BUILD_PRERELEASE=1 && export  NODE_ENV=production && webpack -p --progress --color",
-    "win_build": "rd/S dist && set BABEL_ENV=production && set NODE_ENV=production && set  BUILD_PRERELEASE=1 && webpack -p --progress --color"
+    "win_build": "set BABEL_ENV=production && set NODE_ENV=production && set  BUILD_PRERELEASE=1 && webpack -p --progress --color"
   },
   "author": "白猫",
   "license": "ISC",
