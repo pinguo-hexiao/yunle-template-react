@@ -17,7 +17,7 @@ const history = syncHistoryWithStore(hashHistory, store);
 
 // reduxTools
 function isDevTools() {
-	if( process.env.NODE_ENV === 'development' ){
+	if( process.env.NODE_ENV !== 'production' ){
 		return <DevTools />;
 	}
 	return null;

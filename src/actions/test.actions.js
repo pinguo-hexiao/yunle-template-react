@@ -8,8 +8,8 @@ export function test_say( text ){
 export function test_async( text ){
   const { ASYNC } = TEST;
   return () => {
-    return setTimeout(function(){
-      return { type: ASYNC, data: text }
-    }, 3000)
-  }
-}
+    return setTimeout(function () {
+      return { type: ASYNC, data: text };
+    }, 3000);
+  };
+};

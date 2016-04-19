@@ -9,9 +9,9 @@ const render = require('co-ejs');
 app.name = 'front-server-koa';
 
 // 设置默认环境变量
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+app.env = app.env || 'development';
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = app.env === 'development';
 const defaultPort = isDev ? 5000 : 8300;
 const port = process.env.PORT || defaultPort;
 
@@ -45,10 +45,11 @@ app.use(render(app, {
   cache: false,
   debug: false,
 }));
-
+app.keys = ['im a newer secret', 'i like turtle'];
 app.use(mount('/', routes.middleware()));
 app.use(mount('/api/v1', APIv1.middleware()));
 app.use(mount('/proxy', _proxy.middleware()));
+
 
 
 app.listen(port, (err) => {
