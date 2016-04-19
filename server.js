@@ -42,7 +42,7 @@ app.use(render(app, {
   root: isDev ? path.join(__dirname, 'src') : path.join(__dirname, 'dist'),
   layout: 'index',
   viewExt: 'html',
-  cache: false,
+  cache: true,
   debug: false,
 }));
 app.keys = ['im a newer secret', 'i like turtle'];

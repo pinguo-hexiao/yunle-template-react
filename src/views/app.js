@@ -23,11 +23,11 @@ class App extends Component {
         return true;
       }
     }
-    return false;  
+    return false;
   }
-  render() {    
-    const { 
-      actions, 
+  render() {
+    const {
+      actions,
       children,
       routeActions,
       routing,

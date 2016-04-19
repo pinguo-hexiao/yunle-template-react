@@ -99,18 +99,18 @@ config.plugins = [
     filename: path.join(__dirname, '..', 'dist', 'index.html'),
     template: path.join(__dirname, '..', 'src', 'index.html'),
     hash: false,
-    minify:{    
-      removeComments:true,    
-      collapseWhitespace:true 
+    minify:{
+      removeComments:false,
+      collapseWhitespace:false
     }
   }),
   new TransferWebpackPlugin([
-    { 
-      from: '../src/assets/images', 
+    {
+      from: '../src/assets/images',
       to: '../dist/images'
     },
-    { 
-      from: '../src/assets/fonts', 
+    {
+      from: '../src/assets/fonts',
       to: '../dist/fonts'
     }
   ])
