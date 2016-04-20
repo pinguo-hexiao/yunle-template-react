@@ -1,18 +1,17 @@
 import 'isomorphic-fetch';
 import { API_ROOT } from '../config/apiConf';
 import { CALL_API } from '../constants';
-
 // 接口请求
-function callApi(endpoint, method, body, callback) {
+function callApi(endpoint, _method, data, callback) {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
   return fetch(fullUrl, {
-      	  method: method || 'GET',
-      	  headers: {
-      		  'Accept': 'application/json',
-      		  'Content-Type': 'application/json'
-      		},
-      	  body: body
-      	})
+          method: _method || 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
         .then(response =>
           response.json().then(json => ({ json, response }))
         ).then(({ json, response }) => {
@@ -27,13 +26,13 @@ let isLogin = true;
 export default ({ dispatch,getState }) => next => action => {
 	const callAPI = action[CALL_API];
   const state = getState();
-  
+
   if (typeof callAPI === 'undefined') {
     return next(action)
   }
 
   let { types, endpoint, method, body, callback } = callAPI;
-  
+
   if (!Array.isArray(types) || types.length !== 3) {
     throw new Error('Expected an array of three action types.')
   }
@@ -50,7 +49,7 @@ export default ({ dispatch,getState }) => next => action => {
   const [ requestType, successType, failureType ] = types;
 
   next(actionWith({ type: requestType }));
-  
+
   return callApi(endpoint, method, body, callback).then(
     response => {
       // 判断是否登录 || 登录是否到期
