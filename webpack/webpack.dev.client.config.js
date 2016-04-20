@@ -6,6 +6,7 @@ config.entry['app'] =  [
   'webpack-hot-middleware/client',
   './client.js'
 ];
+config.output.publicPath = 'http://localhost:3001/';
 config.plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.HotModuleReplacementPlugin(),
