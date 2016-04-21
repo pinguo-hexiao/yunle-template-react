@@ -39,7 +39,7 @@
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
-    "antd": "^0.12.13",
+    "antd": "^0.12.14",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.2",
