@@ -4,7 +4,7 @@ var config = require('./webpack.base.config');
 config.devtool = 'eval-source-map';
 config.entry['app'] =  [
   'webpack-hot-middleware/client',
-  './client.js'
+  './src/client.js'
 ];
 config.output.publicPath = 'http://localhost:3001/';
 config.plugins = [
@@ -17,8 +17,8 @@ config.plugins = [
     'window.jQuery': 'jquery'
   }),
   new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-    __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
+    __DEV__: true,
+    __PRERELEASE__: false
   })
 ];
 

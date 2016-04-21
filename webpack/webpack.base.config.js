@@ -1,9 +1,8 @@
-'use strict';
 var path = require('path');
 
 module.exports = {
-  entry: './client.js',
-  context: path.join(__dirname, '..', 'src'),
+  entry: './src/client.js',
+  context: path.join(__dirname, '../'),
   output: {
     path: path.join(__dirname, '..', 'dist/js/'),
     filename: 'js/[name].js',
@@ -24,7 +23,7 @@ module.exports = {
       test: /(\.jsx|\.js)?$/,
       exclude: /node_modules/,
       loader: 'es3ify'
-    }, 
+    },
     {
       test: /(\.jsx|\.js)?$/,
       exclude: /node_modules/,

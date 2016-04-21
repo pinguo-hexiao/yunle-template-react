@@ -1,5 +1,5 @@
 # front-server-koa
-基于koa的reactjs, react-router, redux, immutablejs的前端开发框架 
+基于koa的reactjs, react-router, redux, immutablejs的前端开发框架
 # 启动
 ###开发
 npm install
@@ -30,6 +30,7 @@ npm run build
 │   ├── util                 // 工具函数
 │   └── views                // 页面目录
 │   └── client.js            // 客户端入口
+│   └── index.html           // html模板
 ├── test                     // 测试配置目录
 ├── webpack                  // Webpack配置目录
 │   ├── webpack.base.config.js              // Webpack基础配置文件

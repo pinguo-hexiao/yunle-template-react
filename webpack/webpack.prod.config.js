@@ -9,7 +9,7 @@ var config = require('./webpack.base.config');
 
 config.devtool = 'eval-source-map';
 config.entry = {
-  'app': './client.js',
+  'app': './src/client.js',
   vendor: [
     // 'console-polyfill',
     // 'es5-shim',
@@ -18,7 +18,7 @@ config.entry = {
     // 'json3',
     // 'html5shiv',
     // 'html5shiv/dist/html5shiv-printshiv.js',
-    'jquery'
+    // 'jquery'
   ]
 };
 config.output= {
@@ -81,7 +81,7 @@ config.plugins = [
       warnings: false
     },
     mangle: {
-      except: ['$','jQuery','Immutable']
+      except: ['$', 'jQuery', 'Immutable']
     }
   }),
   new webpack.ProvidePlugin({
@@ -91,8 +91,8 @@ config.plugins = [
     'Immutable': 'Immutable'
   }),
   new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-    __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
+    __DEV__: false,
+    __PRERELEASE__: true
   }),
   new HtmlWebpackPlugin({
     title: 'React app',
@@ -106,20 +106,20 @@ config.plugins = [
   }),
   new TransferWebpackPlugin([
     {
-      from: '../src/assets/style/utils',
-      to: '../dist/css/utils'
+      from: './src/assets/style/utils',
+      to: './dist/css/utils'
     },
     {
-      from: '../src/assets/images',
-      to: '../dist/images'
+      from: './src/assets/images',
+      to: './dist/images'
     },
     {
-      from: '../src/assets/fonts',
-      to: '../dist/fonts'
+      from: './src/assets/fonts',
+      to: './dist/fonts'
     },
     {
-      from: '../src/utils',
-      to: '../dist/js/utils'
+      from: './src/utils',
+      to: './dist/js/utils'
     }
   ])
 ];

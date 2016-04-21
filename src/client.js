@@ -8,15 +8,12 @@ import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 const initialState = require('./config/initialState');
-
-
 const store = configureStore(initialState);
 const history = syncHistoryWithStore(hashHistory, store);
 
-
 // reduxTools
 function isDevTools() {
-	if (process.env.NODE_ENV !== 'production') {
+	if (__DEV__) {
 		return <DevTools />;
 	}
 	return null;
