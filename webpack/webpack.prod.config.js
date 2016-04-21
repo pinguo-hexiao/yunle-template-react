@@ -7,9 +7,8 @@ var TransferWebpackPlugin = require('transfer-webpack-plugin'); //把指定文�
 
 var config = require('./webpack.base.config');
 
-config.devtool = 'eval-source-map';
 config.entry = {
-  'app': './src/client.js',
+  'main': './src/client.js',
   vendor: [
     // 'console-polyfill',
     // 'es5-shim',
@@ -22,9 +21,9 @@ config.entry = {
   ]
 };
 config.output= {
-  path: path.join(__dirname, '..', 'dist'),
-  filename: 'js/[name].[hash].js',
-  chunkFilename: 'js/[id].[hash].js'
+  path: './dist',
+  filename: 'js/[name].js',
+  chunkFilename: 'js/[id].js'
   // publicPath: 'http://localhost:8080/'
 };
 config.externals = {
@@ -70,8 +69,8 @@ config.module= {
   ]
 };
 config.plugins = [
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.[hash].js'),
-  new ExtractTextPlugin('css/[name].[hash].css',
+  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.js'),
+  new ExtractTextPlugin('css/[name].css',
     {
       disable: false,
       allChunks: true
@@ -98,28 +97,28 @@ config.plugins = [
     title: 'React app',
     filename: path.join(__dirname, '..', 'dist', 'index.html'),
     template: path.join(__dirname, '..', 'src', 'index.html'),
-    hash: false,
+    hash: true,
     minify:{
-      removeComments:true,
-      collapseWhitespace:true
+      removeComments:false,
+      collapseWhitespace:false
     }
   }),
   new TransferWebpackPlugin([
     {
       from: './src/assets/style/utils',
-      to: './dist/css/utils'
+      to: './css/utils'
     },
     {
       from: './src/assets/images',
-      to: './dist/images'
+      to: './images'
     },
     {
       from: './src/assets/fonts',
-      to: './dist/fonts'
+      to: './fonts'
     },
     {
       from: './src/utils',
-      to: './dist/js/utils'
+      to: './js/utils'
     }
   ])
 ];

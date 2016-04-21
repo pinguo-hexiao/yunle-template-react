@@ -14,7 +14,7 @@ module.exports = {
       path.join(__dirname, '..', 'src')
     ],
     modulesDirectories: [
-      '../node_modules'
+      'node_modules'
     ],
     extensions: ['', '.js', '.jsx']
   },
