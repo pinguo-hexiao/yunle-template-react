@@ -2,15 +2,16 @@
 基于koa的reactjs, react-router, redux, immutablejs的前端开发框架
 # 启动
 ###开发
-npm i
+1. npm i
 
-npm run dev
+* npm run dev
+
 ###生产
-npm i
+1. npm i
 
-npm run build
+* npm run build
 
-npm run start
+* npm run start
 
 ## 目录结构
 
