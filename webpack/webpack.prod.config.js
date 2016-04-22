@@ -8,16 +8,16 @@ const TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 config.devtool= false;
 config.entry = {
-  'app': ['./src/client.js'],
+  'main': ['./src/client.js'],
   vendor: [
             'jquery'
         ]
 };
 
 config.output= {
-  path: path.join(__dirname, '..' ,'dist/'),
-  filename: 'assets/js/[name].js',
-  chunkFilename: "assets/js/[id].js",
+  path: path.join(__dirname, '..' ,'dist'),
+  filename: '/assets/js/[name].js',
+  chunkFilename: "/assets/js/[id].js",
   // publicPath: 'http://localhost:8080/'
 };
 
@@ -84,8 +84,8 @@ config.plugins = [
     "window.jQuery": "jquery"
   }),
   new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-    __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false')),
+    __DEV__: false,
+    __PRERELEASE__: true,
     'process.env.NODE_ENV': '"production"'
   }),
   new HtmlWebpackPlugin({

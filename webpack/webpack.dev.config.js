@@ -6,11 +6,9 @@ var entry = {};
 entry['app'] = [
       'webpack-hot-middleware/client',
       './src/client.js'];
-var isProduction = function () {
-  return process.env.NODE_ENV === 'production';
-};
+
 module.exports = {
-  devtool: isProduction()?null:'source-map',
+  devtool: 'source-map',
   entry: entry,
   output: {
     path: '/',
@@ -28,8 +26,8 @@ module.exports = {
         "window.jQuery": "jquery"
     }),
     new webpack.DefinePlugin({
-      __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-      __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
+      __DEV__: true,
+      __PRERELEASE__: false
     })
   ],
   resolve: {
@@ -62,9 +60,9 @@ module.exports = {
         'style!' + 'css?sourceMap&-minimize!' + 'postcss'
       )
     },
-    { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=100000&minetype=application/font-woff&name=assets/fonts/[name].[ext]' },
-    { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=100000&minetype=application/font-woff&name=assets/fonts/[name].[ext]' },
-    { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=100000&minetype=application/octet-stream&name=assets/fonts/[name].[ext]' },
+    { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=100000&minetype=application/font-woff&name=/assets/fonts/[name].[ext]' },
+    { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=100000&minetype=application/font-woff&name=/assets/fonts/[name].[ext]' },
+    { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=100000&minetype=application/octet-stream&name=/assets/fonts/[name].[ext]' },
     { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file?name=assets/fonts/[name].[ext]' },
     { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=image/svg+xml&name=assets/fonts/[name].[ext]' },
     { test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i, loader: 'url?limit=30000&name=assets/images/[name].[ext]' },
