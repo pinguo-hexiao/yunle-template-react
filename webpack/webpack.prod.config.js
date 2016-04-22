@@ -95,8 +95,8 @@ config.plugins = [
   }),
   new HtmlWebpackPlugin({
     title: 'React app',
-    filename: path.join(__dirname, '..', 'dist', 'index.html'),
-    template: path.join(__dirname, '..', 'src', 'index.html'),
+    filename: path.join(__dirname, '..', 'dist', 'index.ejs'),
+    template: path.join(__dirname, '..', 'src', 'index.ejs'),
     hash: true,
     minify:{
       removeComments:false,
@@ -105,7 +105,7 @@ config.plugins = [
   }),
   new TransferWebpackPlugin([
     {
-      from: './src/assets/style/utils',
+      from: './src/assets/css/utils',
       to: './css/utils'
     },
     {

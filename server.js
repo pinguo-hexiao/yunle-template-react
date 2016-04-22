@@ -15,7 +15,7 @@ const isDev = app.env === 'development';
 const defaultPort = isDev ? 5000 : 8300;
 const port = process.env.PORT || defaultPort;
 
-app.use(serve(path.join(__dirname, 'dist')));
+app.use(serve(isDev ? path.join(__dirname, 'src') : path.join(__dirname, 'dist')));
 
 const routes = require('./routes/index');
 const APIv1 = require('./routes/api_v1');
@@ -41,7 +41,7 @@ app.use(logger());
 app.use(render(app, {
   root: isDev ? path.join(__dirname, 'src') : path.join(__dirname, 'dist'),
   layout: 'index',
-  viewExt: 'html',
+  viewExt: 'ejs',
   cache: true,
   debug: false,
 }));

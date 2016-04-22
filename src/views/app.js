@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { is } from 'immutable';
 import * as actions from '../actions';
 
-import '../assets/style/base.less';
+import '../assets/css/base.less';
 
 class App extends Component {
   constructor (props) {
