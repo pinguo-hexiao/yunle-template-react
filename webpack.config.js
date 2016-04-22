@@ -1,5 +1,3 @@
-'use strict';
-
 var dev_client = require('./webpack/webpack.dev.client.config.js');
 var prod_client = require('./webpack/webpack.prod.config.js');
 

@@ -5,8 +5,9 @@ const mount = require('koa-mount');
 const serve = require('koa-static');
 const app = koa();
 const render = require('co-ejs');
+const serverConfig = require('./config/server.config');
 
-app.name = 'front-server-koa';
+app.name = serverConfig.name;
 
 // 设置默认环境变量
 app.env = app.env || 'development';
