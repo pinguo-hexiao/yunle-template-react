@@ -69,8 +69,8 @@ config.module= {
   ]
 };
 config.plugins = [
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'assets/js/vendor.js'),
-  new ExtractTextPlugin('assets/css/[name].css',
+  new webpack.optimize.CommonsChunkPlugin('vendor', '/assets/js/vendor.js'),
+  new ExtractTextPlugin('/assets/css/[name].css',
     {
       disable: false,
       allChunks: true

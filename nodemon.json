@@ -12,6 +12,7 @@
   },
   "watch": [
     "server.js",
+    "src/index.ejs",
     "routes/*",
     "webpack.config.js",
     "webpack/*"
