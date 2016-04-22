@@ -22,8 +22,8 @@ config.entry = {
 };
 config.output= {
   path: './dist',
-  filename: 'js/[name].js',
-  chunkFilename: 'js/[id].js'
+  filename: 'assets/js/[name].js',
+  chunkFilename: 'assets/js/[id].js'
   // publicPath: 'http://localhost:8080/'
 };
 config.externals = {
@@ -58,19 +58,19 @@ config.module= {
       'css?sourceMap&-minimize!' + 'postcss'
     )
   },
-  { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=/fonts/[name].[ext]' },
-  { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=/fonts/[name].[ext]' },
-  { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/octet-stream&name=/fonts/[name].[ext]' },
-  { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&name=/fonts/[name].[ext]' },
-  { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=image/svg+xml&name=/fonts/[name].[ext]' },
+  { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=/assets/fonts/[name].[ext]' },
+  { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=/assets/fonts/[name].[ext]' },
+  { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/octet-stream&name=/assets/fonts/[name].[ext]' },
+  { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&name=/assets/fonts/[name].[ext]' },
+  { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=image/svg+xml&name=/assets/fonts/[name].[ext]' },
   { test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i, loaders: [
-    'url?limit=10000&name=/images/[name].[ext]',
+    'url?limit=10000&name=/assets/images/[name].[ext]',
     'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'] }
   ]
 };
 config.plugins = [
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.js'),
-  new ExtractTextPlugin('css/[name].css',
+  new webpack.optimize.CommonsChunkPlugin('vendor', 'assets/js/vendor.js'),
+  new ExtractTextPlugin('assets/css/[name].css',
     {
       disable: false,
       allChunks: true
@@ -106,19 +106,19 @@ config.plugins = [
   new TransferWebpackPlugin([
     {
       from: './src/assets/css/utils',
-      to: './css/utils'
+      to: './assets/css/utils'
     },
     {
       from: './src/assets/images',
-      to: './images'
+      to: './assets/images'
     },
     {
       from: './src/assets/fonts',
-      to: './fonts'
+      to: './assets/fonts'
     },
     {
       from: './src/utils',
-      to: './js/utils'
+      to: './assets/js/utils'
     }
   ])
 ];

@@ -6,7 +6,12 @@ config.entry['app'] =  [
   'webpack-hot-middleware/client',
   './src/client.js'
 ];
-config.output.publicPath = 'http://localhost:3001/';
+config.output = {
+  path: '/',
+  filename: '[name].js',
+  chunkFilename: '[id].js',
+  publicPath : 'http://localhost:3001/'
+};
 config.plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.HotModuleReplacementPlugin(),

@@ -4,9 +4,9 @@ module.exports = {
   entry: './src/client.js',
   context: path.join(__dirname, '../'),
   output: {
-    path: path.join(__dirname, '..', 'dist/js/'),
-    filename: 'js/[name].js',
-    chunkFilename: 'js/[id].js'
+    path: path.join(__dirname, '..', 'dist/'),
+    filename: 'assets/js/[name].js',
+    chunkFilename: 'assets/js/[id].js'
   },
   resolve: {
     root: [
