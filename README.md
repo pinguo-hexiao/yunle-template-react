@@ -38,9 +38,8 @@
 │   └── index.html           // html模板
 ├── test                     // 测试配置目录
 ├── webpack                  // Webpack配置目录
-│   ├── webpack.base.config.js              // Webpack基础配置文件
-│   ├── webpack.dev.client.config.js        // 开发的客户端Webpack配置文件
-│   ├── webpack.prod.config.js              // 生产的Webpack配置文件
+│   ├── webpack.dev.config.js         // 开发环境的Webpack配置文件
+│   ├── webpack.prod.config.js        // 生产环境的Webpack配置文件
 ├── .babelrc                 // babel配置文件
 ├── .eslintrc.js             // eslint配置文件
 ├── History.md               // 更新日志

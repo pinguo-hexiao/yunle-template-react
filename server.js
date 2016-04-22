@@ -23,7 +23,7 @@ const APIv1 = require('./routes/api_v1');
 const _proxy = require('./routes/proxy');
 
 if (isDev) {
-  const config = require('./webpack/webpack.dev.client.config.js');
+  const config = require('./webpack/webpack.dev.config.js');
   const compiler = require('webpack')(config);
   app.use(require('koa-webpack-dev-middleware')(compiler, {
     noInfo: true,
