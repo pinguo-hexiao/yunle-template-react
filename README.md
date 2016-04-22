@@ -4,14 +4,14 @@
 ###开发
 1. npm i
 
-* npm run dev
+2. npm run dev
 
 ###生产
 1. npm i
 
-* npm run build
+2. npm run build
 
-* npm run start
+3. npm run start
 
 ## 目录结构
 
