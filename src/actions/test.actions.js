@@ -7,8 +7,8 @@ export function test_say( text ){
 
 export function test_async( text ){
   const { ASYNC } = TEST;
-  return (dispatch) => {
-    return setTimeout(function () {
+  return (dispatch, getState) => {
+    setTimeout(() => {
       return dispatch({ type: ASYNC, data: text });
     }, 3000);
   };
