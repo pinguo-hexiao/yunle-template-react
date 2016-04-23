@@ -16,8 +16,8 @@ config.entry = {
 
 config.output= {
   path: path.join(__dirname, '..' ,'dist'),
-  filename: '/assets/js/[name].js',
-  chunkFilename: "/assets/js/[id].js",
+  filename: 'assets/js/[name].js',
+  chunkFilename: "assets/js/[id].js",
   // publicPath: 'http://localhost:8080/'
 };
 
@@ -54,19 +54,19 @@ config.module= {
         'css?sourceMap&-minimize!' + 'postcss'
       )
     },
-    { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=/assets/fonts/[name].[ext]' },
-    { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=/assets/fonts/[name].[ext]' },
-    { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/octet-stream&name=/assets/fonts/[name].[ext]' },
-    { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&name=/assets/fonts/[name].[ext]' },
-    { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=image/svg+xml&name=/assets/fonts/[name].[ext]' },
+    { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=assets/fonts/[name].[ext]' },
+    { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=assets/fonts/[name].[ext]' },
+    { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/octet-stream&name=assets/fonts/[name].[ext]' },
+    { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&name=assets/fonts/[name].[ext]' },
+    { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=image/svg+xml&name=assets/fonts/[name].[ext]' },
     { test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i, loaders: [
-    'url?limit=10000&name=/assets/images/[name].[ext]',
+    'url?limit=10000&name=assets/images/[name].[ext]',
     'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'] }
     ]
   };
 config.plugins = [
-  new webpack.optimize.CommonsChunkPlugin('vendor', '/assets/js/vendor.js'),
-  new ExtractTextPlugin('/assets/css/[name].css',
+  new webpack.optimize.CommonsChunkPlugin('vendor', 'assets/js/vendor.js'),
+  new ExtractTextPlugin('assets/css/[name].css',
     {
       disable: false,
       allChunks: true
@@ -91,7 +91,7 @@ config.plugins = [
   }),
   new HtmlWebpackPlugin({
     title: 'React app',
-    filename: path.join(__dirname, '..', 'dist', 'index.ejs'),
+    filename: path.join(__dirname, '..', 'dist', 'index.html'),
     template: path.join(__dirname, '..', 'src', 'index.ejs'),
     hash: true,
     minify:{
