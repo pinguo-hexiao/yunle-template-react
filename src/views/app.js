@@ -40,7 +40,7 @@ class App extends Component {
           </div>
           <div>
             { test.getIn(['test','async']) }
-            <button onClick={actions.test_async.bind(this, Math.random())}>redux异步操作</button>
+            <button onClick={actions.test_async.bind(this, Math.random())}>redux 3秒异步操作</button>
           </div>
             {
               React.cloneElement(children || <span>没有子页面</span>, {
