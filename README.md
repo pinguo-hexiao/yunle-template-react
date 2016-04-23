@@ -6,12 +6,16 @@
 
 2. npm run dev
 
+3. ==> 🌎  Listening on port %s. Open up http://localhost:5000/ in your browser.
+
 ###生产
 1. npm i
 
 2. npm run build
 
 3. npm run start
+
+4. ==> 🌎  Listening on port %s. Open up http://localhost:8300/ in your browser.
 
 ## 目录结构
 
