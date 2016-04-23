@@ -8,6 +8,7 @@ import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 const initialState = require('./config/initialState');
+
 const store = configureStore(initialState);
 const history = syncHistoryWithStore(hashHistory, store);
 
@@ -20,6 +21,9 @@ function isDevTools() {
 }
 
 export default class Root extends Component{
+	constructor(props) {
+    super(props);
+  }
 	render(){
 		return (
 			<Provider store={store}>

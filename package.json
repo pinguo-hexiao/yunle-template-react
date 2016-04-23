@@ -90,6 +90,7 @@
     "redux-devtools-log-monitor": "^1.0.5",
     "redux-immutablejs": "0.0.8",
     "redux-thunk": "^2.0.1",
+    "rimraf": "^2.5.2",
     "storejs": "^1.0.8",
     "style-loader": "^0.13.1",
     "transfer-webpack-plugin": "^0.1.4",

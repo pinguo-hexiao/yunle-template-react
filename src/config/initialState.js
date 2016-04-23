@@ -1,4 +1,1 @@
-import Immutable from "immutable";
-module.exports = {
-
-};
+module.exports = { };
