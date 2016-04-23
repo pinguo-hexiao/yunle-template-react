@@ -38,6 +38,7 @@
 │   └── index.html           // html模板
 ├── test                     // 测试配置目录
 ├── webpack                  // Webpack配置目录
+│   ├── webpack.base.config.js        // Webpack base 配置文件
 │   ├── webpack.dev.config.js         // 开发环境的Webpack配置文件
 │   ├── webpack.prod.config.js        // 生产环境的Webpack配置文件
 ├── .babelrc                 // babel配置文件
