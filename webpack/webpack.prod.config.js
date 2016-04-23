@@ -23,7 +23,8 @@ config.output= {
 
 config.externals = {
   'react': 'React',
-  'react-dom': 'ReactDOM'
+  'react-dom': 'ReactDOM',
+  'immutable': 'Immutable'
 };
 
 config.module= {

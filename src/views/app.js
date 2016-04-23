@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { routerActions } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
-import { is } from 'immutable';
+import Immutable, { is } from 'immutable';
 import * as actions from '../actions';
 
 import '../assets/css/base.less';

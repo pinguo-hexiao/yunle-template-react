@@ -14,7 +14,7 @@ module.exports = {
     path: '/',
     filename: 'main.js',
     chunkFilename: "[id].[chunkhash].js",
-    publicPath: 'http://localhost:3001/'
+    publicPath: 'http://localhost:5000/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
