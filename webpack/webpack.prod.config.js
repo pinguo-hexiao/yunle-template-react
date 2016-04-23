@@ -92,6 +92,7 @@ config.plugins = [
   }),
   new HtmlWebpackPlugin({
     title: 'React app',
+    __INITIAL_STATE__: require('../src/config/initialState'),
     filename: path.join(__dirname, '..', 'dist', 'index.html'),
     template: path.join(__dirname, '..', 'src', 'index.ejs'),
     hash: true,
