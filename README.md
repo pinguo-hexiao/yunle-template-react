@@ -6,7 +6,7 @@
 
 2. npm run dev
 
-3. ==> 🌎  Listening on port 5000. Open up http://localhost:5000/ in your browser.
+3. ==> 🌎  Listening on port 5000. Open up [http://localhost:5000/](http://localhost:5000/) in your browser.
 
 ###生产
 1. npm i
@@ -15,7 +15,7 @@
 
 3. npm run start
 
-4. ==> 🌎  Listening on port 8300. Open up http://localhost:8300/ in your browser.
+4. ==> 🌎  Listening on port 8300. Open up [http://localhost:8300/](http://localhost:8300/) in your browser.
 
 ## 目录结构
 
