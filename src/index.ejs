@@ -26,7 +26,7 @@
       <script src="assets/js/utils/react-dom.min.js"></script>
       <script src="assets/js/utils/immutable.min.js"></script>
       <script type="text/javascript">
-        window.__INITIAL_STATE__ = <%- JSON.stringify(htmlWebpackPlugin.options.__INITIAL_STATE__ || {}) %>
+        <%= htmlWebpackPlugin.options.initialData %>
       </script>
     <% } %>
   </body>

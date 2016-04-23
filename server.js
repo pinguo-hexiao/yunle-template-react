@@ -42,7 +42,7 @@ app.use(logger());
 app.use(render(app, {
   root: isDev ? path.join(__dirname, 'src') : path.join(__dirname, 'dist'),
   layout: 'index',
-  viewExt: isDev ? 'ejs' : 'html',
+  viewExt: 'ejs',
   cache: true,
   debug: false,
 }));

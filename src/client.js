@@ -7,8 +7,7 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-const initialState = require('./config/initialState');
-
+const initialState = __DEV__ ? require('./config/initialState') : (window.__INITIAL_STATE__ || {});
 const store = configureStore(initialState);
 const history = syncHistoryWithStore(hashHistory, store);
 

@@ -8,7 +8,8 @@ routes
 		yield this.render('index', {
 			htmlWebpackPlugin: {
 				options: {}
-			}
+			},
+			__state__: JSON.stringify({test:{},a:123})
 		});
 	});
 
