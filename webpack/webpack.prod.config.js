@@ -1,12 +1,13 @@
-var path = require('path')
-var webpack = require('webpack');
-var config = require('./webpack.dev.config');
-var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path')
+const webpack = require('webpack');
+const config = require('./webpack.base.config');
+const UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 config.devtool= false;
+
 config.entry = {
   'main': ['./src/client.js'],
   vendor: [
