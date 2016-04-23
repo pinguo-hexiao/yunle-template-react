@@ -7,9 +7,9 @@ export function test_say( text ){
 
 export function test_async( text ){
   const { ASYNC } = TEST;
-  return () => {
+  return (dispatch) => {
     return setTimeout(function () {
-      return { type: ASYNC, data: text };
+      return dispatch({ type: ASYNC, data: text });
     }, 3000);
   };
-};
+}

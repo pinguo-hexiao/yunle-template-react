@@ -12,7 +12,8 @@ import rootReducer from '../reducers';
 
 let finalCreateStore = compose(
   applyMiddleware(router_middleware),
-  applyMiddleware(reactThunk, api_middleware)
+  applyMiddleware(reactThunk),
+  applyMiddleware(api_middleware)
 );
 
 
