@@ -10,11 +10,9 @@ const initialState = fromJS({
 });
 export default createReducer(initialState, {
   [TEST.SAY]: (state, action) => {
-    console.log(action)
     return state.setIn(['test', 'text'], action.data)
   },
   [TEST.ASYNC]: (state, action) => {
-    console.log(action)
     return state.setIn(['test', 'async'], action.data)
   }
 });

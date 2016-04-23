@@ -21,8 +21,6 @@ function callApi(endpoint, _method, data, callback) {
           return json;
         });
 }
-// 登录是否到期
-let isLogin = true;
 export default ({ dispatch,getState }) => next => action => {
 	const callAPI = action[CALL_API];
   const state = getState();
@@ -52,27 +50,11 @@ export default ({ dispatch,getState }) => next => action => {
 
   return callApi(endpoint, method, body, callback).then(
     response => {
-      // 判断是否登录 || 登录是否到期
-      if(response.errcode === 200000 && isLogin ){
-        isLogin = false;
-      }else if(isLogin ){
-        isLogin = true;
-        // 回调
-        typeof callback === 'function' ? dispatch(callback) : null;
-        if(response.errcode === 0){
-          next(actionWith({
-            response,
-            body,
-            type: successType
-          }));
-        }else{
           next(actionWith({
             response,
             body,
             type: failureType
           }));
-        }
-      }
   	},
     error => next(actionWith({
       type: failureType,
