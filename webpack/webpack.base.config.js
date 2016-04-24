@@ -57,14 +57,14 @@ module.exports = {
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file?name=assets/fonts/[name].[ext]' },
+        loader: 'file?name=/assets/fonts/[name].[ext]' },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&minetype=image/svg+xml&name=assets/fonts/[name].[ext]'
+        loader: 'url?limit=10000&minetype=image/svg+xml&name=/assets/fonts/[name].[ext]'
       },
       {
         test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i,
-        loader: 'url?limit=30000&name=assets/images/[name].[ext]'
+        loader: 'url?limit=30000&name=/assets/images/[name].[ext]'
       }
     ]
   }
