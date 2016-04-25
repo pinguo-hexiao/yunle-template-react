@@ -39,7 +39,7 @@
 │   ├── util                 // 工具函数
 │   └── views                // 页面目录
 │   └── client.js            // 客户端入口
-│   └── index.html           // html模板
+│   └── index.ejs            // ejs模板
 ├── test                     // 测试配置目录
 ├── webpack                  // Webpack配置目录
 │   ├── webpack.base.config.js        // Webpack base 配置文件
