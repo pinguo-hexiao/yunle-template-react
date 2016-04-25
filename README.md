@@ -1,5 +1,8 @@
 # front-server-koa
 基于koa的reactjs, react-router, redux, immutablejs的前端开发框架
+
+可配合我另一开源项目 [api-server-koa](https://github.com/hexiao-o/api-server-koa) 做为前端mock数据源，简单做到前后端分离
+
 # 启动
 ###开发
 1. npm i
