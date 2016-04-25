@@ -4,7 +4,6 @@ import { routerActions } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import Immutable, { is } from 'immutable';
 import * as actions from '../actions';
-
 import '../assets/css/base.less';
 
 class App extends Component {
