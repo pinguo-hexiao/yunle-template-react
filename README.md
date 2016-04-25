@@ -7,9 +7,11 @@
 ###开发
 1. npm i
 
-2. npm run dev
+2. npm i nodemon -g
 
-3. ==> 🌎  Listening on port 5000. Open up [http://localhost:5000/](http://localhost:5000/) in your browser.
+3. npm run dev
+
+4. ==> 🌎  Listening on port 5000. Open up [http://localhost:5000/](http://localhost:5000/) in your browser.
 
 ###生产
 1. npm i
