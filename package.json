@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "antd": "^0.12.14",
+    "autoprefixer": "^6.3.6",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.2",
@@ -75,6 +76,7 @@
     "mockjs": "^1.0.1-beta2",
     "nodemon": "^1.9.1",
     "postcss-loader": "^0.8.2",
+    "precss": "^1.4.0",
     "react": "^0.14.8",
     "react-cookie": "^0.4.5",
     "react-dom": "^0.14.8",
