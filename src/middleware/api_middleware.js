@@ -1,4 +1,5 @@
-import 'isomorphic-fetch';
+require('es6-promise').polyfill();
+import fetch from 'isomorphic-fetch'
 import { API_ROOT } from '../config/apiConf';
 import { CALL_API } from '../constants';
 // 接口请求
@@ -23,6 +24,7 @@ function callApi(endpoint, _method, data, callback) {
           return json;
         });
 }
+
 export default ({ dispatch,getState }) => next => action => {
 	const callAPI = action[CALL_API];
   const state = getState();
