@@ -14,7 +14,7 @@ const history = syncHistoryWithStore(hashHistory, store);
 // reduxTools
 function isDevTools() {
 	if (__DEV__) {
-		return <DevTools />;
+		return !window.devToolsExtension ? <DevTools /> : null;
 	}
 	return null;
 }

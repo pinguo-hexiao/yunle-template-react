@@ -4,17 +4,19 @@ import { CALL_API } from '../constants';
 // 接口请求
 function callApi(endpoint, _method, data, callback) {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
-  return fetch(fullUrl, {
-          method: _method || 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        })
+  const options = {
+    method: _method || 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  };
+  return fetch(fullUrl, options)
         .then(response =>
           response.json().then(json => ({ json, response }))
-        ).then(({ json, response }) => {
+        )
+        .then(({ json, response }) => {
           if (!response.ok) {
             return Promise.reject(json);
           }

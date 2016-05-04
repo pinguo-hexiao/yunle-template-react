@@ -15,7 +15,7 @@ let finalCreateStore = compose(
   applyMiddleware(router_middleware),
   applyMiddleware(reactThunk),
   applyMiddleware(api_middleware),
-  DevTools.instrument(),
+  window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
   persistState(
     window.location.href.match(
       /[?&]debug_session=([^&]+)\b/
