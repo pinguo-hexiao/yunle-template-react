@@ -26,6 +26,7 @@
   "author": "白猫",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.3.5",
     "co": "^4.6.0",
     "co-ejs": "^1.5.2",
     "ejs": "^2.4.1",

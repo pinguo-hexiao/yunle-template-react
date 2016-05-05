@@ -11,7 +11,7 @@ function callApi(endpoint, _method, data, callback) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    // body: JSON.stringify(data)
   };
   return fetch(fullUrl, options)
         .then(response =>
@@ -54,15 +54,19 @@ export default ({ dispatch,getState }) => next => action => {
 
   return callApi(endpoint, method, body, callback).then(
     response => {
-          next(actionWith({
-            response,
-            body,
-            type: failureType
-          }));
+      typeof callback === 'function' ? dispatch(callback()) : null;
+      next(actionWith({
+        response,
+        body,
+        type: successType
+      }));
   	},
-    error => next(actionWith({
-      type: failureType,
-      error: error.message || '网络异常,请重试'
-    }))
+    error => {
+      typeof callback === 'function' ? dispatch(callback()) : null;
+      next(actionWith({
+        type: failureType,
+        error: error.message || '网络异常,请重试'
+      }));
+    }
   )
 }
