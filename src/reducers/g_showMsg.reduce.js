@@ -17,9 +17,6 @@ export default createReducer(initialState, {
     })
   },
   [G_SHOWMSG.G_HIDEMSG]: (state, action) => {
-    return state.merge({
-      show: true,
-      msg: action.data
-    })
+    return state.merge(initialState);
   }
 });

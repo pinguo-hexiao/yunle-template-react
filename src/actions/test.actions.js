@@ -1,5 +1,7 @@
 import { TEST, CALL_API } from '../constants';
 
+import { G_showMsg } from './g_showMsg.actions'
+
 export function test_say( text ){
   const { SAY } = TEST;
   return { type: SAY, data: text }
@@ -24,9 +26,12 @@ export function test_async( text ){
         endpoint: '/user',
         method: 'GET',
         body: {},
-        callback: () => {
+        callback: (err) => {
           console.log(`测试redux async 回调`);
-          return test_say(223)
+          if(err){
+            return G_showMsg({type: 'error', content:err})
+          }
+          return G_showMsg({type: 'success', content:'成功'})
         }
       }
     })

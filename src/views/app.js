@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import Immutable, { is } from 'immutable';
 import * as actions from '../actions';
 import '../assets/css/base.less';
+import 'antd/style/index.less'
+import G_msg from '../components/G_msg'
 
 class App extends Component {
   constructor (props) {
@@ -30,7 +32,8 @@ class App extends Component {
       children,
       routeActions,
       routing,
-      test
+      test,
+      g_showMsg
     } = this.props;
 		return (<div>
           <div>
@@ -48,19 +51,22 @@ class App extends Component {
                 routing
               })
             }
+            <G_msg msg={g_showMsg.toJS()} hideMsg = {actions.G_hideMsg} />
            </div>);
   }
 }
 
 App.propTypes = {
   routing : PropTypes.object.isRequired,
-  test    : PropTypes.object.isRequired
+  test    : PropTypes.object.isRequired,
+  g_showMsg : PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
     routing : state.routing,
-    test    : state.test
+    test    : state.test,
+    g_showMsg: state.g_showMsg
   };
 }
 

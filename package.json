@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "nodemon ./server",
     "restart": "pm2 restart process.json",
-    "start": "pm2 start process.json",
+    "start": "pm2 start process.json --no-daemon",
     "stop": "pm2 stop process.json",
     "pm2logs": "pm2 logs",
     "pm2flush": "pm2 flush",
