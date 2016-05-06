@@ -14,7 +14,6 @@ function callApi(endpoint, _method, data, callback) {
     // body: JSON.stringify(data)
   };
   return fetch(fullUrl, options)
-
 }
 
 export default ({ dispatch,getState }) => next => action => {
@@ -44,32 +43,31 @@ export default ({ dispatch,getState }) => next => action => {
 
   next(actionWith({ type: requestType }));
 
-  return callApi(endpoint, method, body, callback).then(
+  return callApi(endpoint, method, body, callback)
+  .then(response =>
+     response.json()
+     .then(json => ({ json, response }))
+  )
+  .then(({ json, response }) => {
+     if (!response.ok) {
+       typeof callback === 'function' ? dispatch(callback('网络异常,请重试')) : null;
+       return Promise.reject(json);
+     }
+     return json;
+  })
+  .then(
     response => {
-      console.log(response)
-      if(response.ok){
-        typeof callback === 'function' ? dispatch(callback()) : null;
-        next(actionWith({
-          response,
-          body,
-          type: successType
-        }));
-      } else {
-        typeof callback === 'function' ?
-        dispatch(callback(`code:${response.status},网络异常,请重试`)) :
-        null;
-        next(actionWith({
-          type: failureType,
-          error: error.message || '网络异常,请重试'
-        }));
-      }
-  	},
+      typeof callback === 'function'
+      ? dispatch(callback()) : null;
+      next(actionWith({
+        response,
+        body,
+        type: successType }));},
     error => {
       typeof callback === 'function' ? dispatch(callback(error.message)) : null;
       next(actionWith({
         type: failureType,
-        error: error.message || '网络异常,请重试'
-      }));
+        error: error.message || '网络异常,请重试' }));
     }
-  )
+  );
 }

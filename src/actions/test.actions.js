@@ -7,15 +7,6 @@ export function test_say( text ){
   return { type: SAY, data: text }
 }
 
-// export function test_async( text ){
-//   const { ASYNC } = TEST;
-//   return (dispatch, getState) => {
-//     setTimeout(() => {
-//       return dispatch({ type: ASYNC, data: text });
-//     }, 3000);
-//   };
-// }
-
 export function test_async( text ){
   const { ASYNC } = TEST;
   return (dispatch, getState)=>{
@@ -27,11 +18,10 @@ export function test_async( text ){
         method: 'GET',
         body: {},
         callback: (err) => {
-          console.log(`测试redux async 回调`);
           if(err){
-            return G_showMsg({type: 'error', content:err})
+            return G_showMsg({type: 'error', content: err});
           }
-          return G_showMsg({type: 'success', content:'成功'})
+          return G_showMsg({type: 'success', content: '成功'});
         }
       }
     })
